@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type { FilterType, Todo } from '../types'
 
-const API_URL = 'http://localhost:3001'
+const API_URL = 'http://x15mtf5e0718y18ig3w7cygl.62.238.16.1.sslip.io'
 
 export interface TodosResponse {
 	data: Todo[]
