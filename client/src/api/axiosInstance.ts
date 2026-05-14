@@ -4,7 +4,7 @@ const runLocal = false
 
 const BASE_URL = runLocal
 	? 'http://localhost:3001'
-	: 'http://x15mtf5e0718y18ig3w7cygl.62.238.16.1.sslip.io'
+	: 'https://todo-zmqg.onrender.com'
 
 export const apiClient = axios.create({
 	baseURL: BASE_URL
