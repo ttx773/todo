@@ -1,7 +1,5 @@
-import axios from 'axios'
 import type { FilterType, Todo } from '../types'
-
-const API_URL = 'http://x15mtf5e0718y18ig3w7cygl.62.238.16.1.sslip.io'
+import apiClient from './axiosInstance'
 
 export interface TodosResponse {
 	data: Todo[]
@@ -16,30 +14,30 @@ export const fetchTodos = async (
 	limit: number,
 	filter: FilterType
 ): Promise<TodosResponse> => {
-	const response = await axios.get<TodosResponse>(
-		`${API_URL}/todos?page=${page}&limit=${limit}&filter=${filter}`
+	const response = await apiClient.get<TodosResponse>(
+		`/todos?page=${page}&limit=${limit}&filter=${filter}`
 	)
 	return response.data
 }
 
 export const createTodo = async (text: string): Promise<Todo> => {
-	const response = await axios.post<Todo>(`${API_URL}/todos`, { text })
+	const response = await apiClient.post<Todo>('/todos', { text })
 	return response.data
 }
 
 export const deleteTodo = async (id: number): Promise<void> => {
-	await axios.delete(`${API_URL}/todos/${id}`)
+	await apiClient.delete(`/todos/${id}`)
 }
 
 export const updateTodo = async (
 	id: number,
 	updates: Partial<Pick<Todo, 'text' | 'completed'>>
 ): Promise<Todo> => {
-	const response = await axios.put<Todo>(`${API_URL}/todos/${id}`, updates)
+	const response = await apiClient.put<Todo>(`/todos/${id}`, updates)
 	return response.data
 }
 
 export const toggleTodoApi = async (id: number): Promise<Todo> => {
-	const response = await axios.patch<Todo>(`${API_URL}/todos/${id}/toggle`)
+	const response = await apiClient.patch<Todo>(`/todos/${id}/toggle`)
 	return response.data
 }

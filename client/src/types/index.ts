@@ -1,10 +1,32 @@
-export interface Todo {
+interface Todo {
 	id: number
 	text: string
 	completed: boolean
 	createdAt: string
 }
 
-export type SortOrder = 'newest' | 'oldest'
+type SortOrder = 'newest' | 'oldest'
 
-export type FilterType = 'all' | 'active' | 'completed'
+type FilterType = 'all' | 'active' | 'completed'
+
+interface User {
+	id: number
+	email: string
+	age?: number
+	createdAt: string
+}
+
+interface AuthTokens {
+	accessToken: string
+	refreshToken: string
+}
+
+interface AuthState {
+	user: User | null
+	token: string | null
+	refreshToken: string | null
+	status: 'idle' | 'loading' | 'failed'
+	error: string | null
+}
+
+export type { AuthState, AuthTokens, FilterType, SortOrder, Todo, User }

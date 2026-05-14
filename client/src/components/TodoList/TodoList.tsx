@@ -62,8 +62,7 @@ const TotalText = styled.span`
 `
 
 const selectSx = {
-	minWidth: 130,
-	'& .MuiOutlinedInput-notchedOutline': { borderColor: 'inherit' }
+	minWidth: 130
 }
 
 const TodoList: React.FC = () => {
